@@ -27,7 +27,7 @@ fun main(args: Array<String>) {
     println()
     // 另一种方式实现解析
     val otherPerson = Gson().fromJson<Person>(SINGLE)
-    val otherPersons = Gson().toArray<List<Person>>(SEVERAL);
+    val otherPersons = Gson().toArray<List<Person>>(SEVERAL)
 
     println("other person : $otherPerson \nother persons : $otherPersons")
 
