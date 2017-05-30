@@ -1,4 +1,4 @@
-package com.foolchen.kotlin.java.generics
+package com.foolchen.kotlin.java
 
 
 /**
