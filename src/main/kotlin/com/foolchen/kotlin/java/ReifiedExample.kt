@@ -33,6 +33,11 @@ fun main(args: Array<String>) {
 
 }
 
+// 以下两个函数为内联函数，会在使用时直接嵌入到调用处（可以理解为批量替换）
+// 能够提高程序的执行效率（没有了方法的调用时间）
+// 但是会增加生成的代码量（将函数直接替换到了调用处，而不是调用方法）
+// 故一般会对一些简单的处理进行内联，而如果是复杂的函数则不要使用内联
+
 // 该方法是对Gson.fromJson的扩展
 inline fun <reified T : Any> Gson.fromJson(json: String): T = this.fromJson(json, T::class.java)
 
