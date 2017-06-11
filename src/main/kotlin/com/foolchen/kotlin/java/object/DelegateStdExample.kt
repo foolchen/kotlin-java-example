@@ -1,5 +1,7 @@
 package com.foolchen.kotlin.java.`object`
 
+import kotlin.properties.Delegates
+
 /**
  * 标准委托
  * @author chenchong. Created on 2017/6/11.
@@ -21,8 +23,33 @@ val lazyValue: String by lazy/*(LazyThreadSafetyMode.PUBLICATION)*/ {
     "Hello,this is lazy()"
 }
 
-fun main(args: Array<String>) {
+/*
+可观察属性Observable
+在属性改变时会调用onChange()方法进行通知
+ */
+class User {
+    var listener: ValueChangeListener? = null
+    var name: String by Delegates.observable("Initial Value") {
+        property, oldValue, newValue ->
+        listener?.onChanged(property.name, oldValue, newValue)
+    }
+}
 
+interface ValueChangeListener {
+    fun onChanged(propertyName: String, oldValue: Any, newValue: Any)
+}
+
+fun main(args: Array<String>) {
     println(lazyValue)
     println(lazyValue)
+
+    val user = User()
+    user.listener = object : ValueChangeListener {
+        override fun onChanged(propertyName: String, oldValue: Any, newValue: Any) {
+            println("propertyName=$propertyName,oldValue=$oldValue,newValue=$newValue")
+        }
+    }
+    println(user.name)
+    user.name = "This is new name."
+    println(user.name)
 }
