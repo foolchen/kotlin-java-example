@@ -13,7 +13,8 @@ fun main(args: Array<String>) {
     val list = listOf("abc", "bc", "c")
     val max = max(list, { a, b -> a.length < b.length })
     println(max)
-
+    // 如果一个看书接受另一个函数作为最后一个参数，则该参数可以在圆括号参数列表之外传递
+    println(max(list) { a, b -> a.length < b.length })
     grammar()
 }
 
