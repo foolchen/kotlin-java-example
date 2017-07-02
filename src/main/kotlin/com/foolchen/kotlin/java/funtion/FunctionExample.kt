@@ -6,7 +6,7 @@ package com.foolchen.kotlin.java.funtion
 
 // 为Int类型定义扩展
 // 定义了整数的除运算
-infix fun Int.divider(x: Int): Int {
+infix fun Int.divide(x: Int): Int {
     return this / x
 }
 
@@ -19,8 +19,8 @@ fun read(s: String, off: Int = 0, len: Int = s.length) {
 fun main(args: Array<String>) {
     // 针对一个值进行除法计算
     val number = 9
-    println(number divider 2)
-    println(number.divider(2))
+    println(number divide 2)
+    println(number.divide(2))
 
     // 在其他参数有默认值的情况下，可以只传入不为空的参数即可
     read("123")
